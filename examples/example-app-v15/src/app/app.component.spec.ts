@@ -101,4 +101,8 @@ function tests() {
     fixture.detectChanges();
     expect(heroesLink.navigatedTo).toBe('/heroes');
   });
+
+  it('should create instance', () => {
+    expect(fixture).toMatchSnapshot();
+  });
 }
