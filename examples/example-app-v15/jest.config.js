@@ -1,6 +1,3 @@
-const { pathsToModuleNameMapper } = require('ts-jest');
-const { paths } = require('./tsconfig.json').compilerOptions;
-
 // eslint-disable-next-line no-undef
 globalThis.ngJest = {
   skipNgcc: false,
@@ -9,8 +6,19 @@ globalThis.ngJest = {
 
 /** @type {import('ts-jest/dist/types').JestConfigWithTsJest} */
 module.exports = {
-  preset: 'jest-preset-angular',
   globalSetup: 'jest-preset-angular/global-setup',
-  moduleNameMapper: pathsToModuleNameMapper(paths, { prefix: '<rootDir>' }),
+  // moduleNameMapper: pathsToModuleNameMapper(paths, { prefix: '<rootDir>' }),
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+  testEnvironment: 'jsdom',
+  moduleFileExtensions: ['ts', 'html', 'js', 'json', 'mjs'],
+  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
+  transform: {
+    '^.+\\.(ts|js|mjs|html|svg)$': [
+      'ts-jest',
+      {
+        tsconfig: '<rootDir>/tsconfig.spec.json',
+        stringifyContentPathRegex: '\\.(html|svg)$',
+      },
+    ],
+  },
 };
