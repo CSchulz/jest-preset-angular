@@ -1,7 +1,7 @@
 import ngPreset from 'jest-preset-angular/presets/index.js';
 
 globalThis.ngJest = {
-  skipNgcc: false,
+  skipNgcc: true,
   tsconfig: 'tsconfig-esm-ts-jest.spec.json',
 };
 

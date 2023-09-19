@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-undef
 globalThis.ngJest = {
-  skipNgcc: false,
+  skipNgcc: true,
   tsconfig: 'tsconfig.spec.json',
 };
 
